@@ -38,7 +38,8 @@ struct KidsAndFamilySection: View {
                 imageURL: nil,
                 backdropURL: nil,
                 type: .movie,
-                logoURL: nil
+                logoURL: nil,
+                releaseDate: nil
             ),
             ContentItem(
                 tmdbId: 2,
@@ -47,7 +48,8 @@ struct KidsAndFamilySection: View {
                 imageURL: nil,
                 backdropURL: nil,
                 type: .movie,
-                logoURL: nil
+                logoURL: nil,
+                releaseDate: nil
             )
         ]
     )

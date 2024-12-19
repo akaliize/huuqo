@@ -134,7 +134,8 @@ struct BigCardView: View {
             imageURL: nil,
             backdropURL: nil,
             type: .movie,
-            logoURL: nil
+            logoURL: nil,
+            releaseDate: nil
         ),
         onPlayTapped: {},
         onAddToListTapped: {}

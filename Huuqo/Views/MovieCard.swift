@@ -53,7 +53,8 @@ struct MovieCard: View {
         imageURL: nil,
         backdropURL: nil,
         type: .movie,
-        logoURL: nil
+        logoURL: nil,
+        releaseDate: "2024-03-15"
     ))
     .frame(width: 150)
     .padding()

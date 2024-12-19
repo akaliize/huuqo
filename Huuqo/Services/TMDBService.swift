@@ -106,6 +106,7 @@ struct TMDBContent: Codable, Identifiable, Hashable {
 extension TMDBContent {
     func toContentItem() -> ContentItem {
         let subtitle = genreNames.isEmpty ? "No genres available" : genreNames.first ?? "No genres available"
+        let releaseDate = type == .movie ? releaseDate : firstAirDate
         
         return ContentItem(
             tmdbId: id,
@@ -114,7 +115,8 @@ extension TMDBContent {
             imageURL: posterPath,
             backdropURL: backdropPath,
             type: type,
-            logoURL: nil
+            logoURL: nil,
+            releaseDate: releaseDate
         )
     }
 }
@@ -365,7 +367,8 @@ class TMDBService {
                     imageURL: contentItem.imageURL,
                     backdropURL: contentItem.backdropURL,
                     type: contentItem.type,
-                    logoURL: logoPath
+                    logoURL: logoPath,
+                    releaseDate: contentItem.releaseDate
                 )
                 contentItems.append(contentItem)
             } catch {
@@ -461,7 +464,8 @@ class TMDBService {
                     imageURL: contentItem.imageURL,
                     backdropURL: contentItem.backdropURL,
                     type: contentItem.type,
-                    logoURL: logoPath
+                    logoURL: logoPath,
+                    releaseDate: contentItem.releaseDate
                 )
                 contentItems.append(contentItem)
             } catch {
@@ -521,7 +525,8 @@ class TMDBService {
                     imageURL: contentItem.imageURL,
                     backdropURL: contentItem.backdropURL,
                     type: contentItem.type,
-                    logoURL: logoPath
+                    logoURL: logoPath,
+                    releaseDate: contentItem.releaseDate
                 )
                 contentItems.append(contentItem)
             } catch {
@@ -551,7 +556,8 @@ class TMDBService {
                     imageURL: contentItem.imageURL,
                     backdropURL: contentItem.backdropURL,
                     type: contentItem.type,
-                    logoURL: logoPath
+                    logoURL: logoPath,
+                    releaseDate: contentItem.releaseDate
                 )
                 contentItems.append(contentItem)
             } catch {
@@ -614,7 +620,8 @@ class TMDBService {
                 imageURL: movie.posterPath,
                 backdropURL: movie.backdropPath,
                 type: .movie,
-                logoURL: nil
+                logoURL: nil,
+                releaseDate: movie.releaseDate
             )
         }
         
@@ -671,7 +678,8 @@ class TMDBService {
                     imageURL: show.posterPath,
                     backdropURL: show.backdropPath,
                     type: .series,
-                    logoURL: nil
+                    logoURL: nil,
+                    releaseDate: show.firstAirDate
                 )
             }
             
@@ -689,7 +697,8 @@ class TMDBService {
                 imageURL: show.posterPath,
                 backdropURL: show.backdropPath,
                 type: .series,
-                logoURL: nil
+                logoURL: nil,
+                releaseDate: show.firstAirDate
             )
         }
         
@@ -742,7 +751,8 @@ class TMDBService {
                     imageURL: contentItem.imageURL,
                     backdropURL: contentItem.backdropURL,
                     type: contentItem.type,
-                    logoURL: logoPath
+                    logoURL: logoPath,
+                    releaseDate: contentItem.releaseDate
                 )
                 contentItems.append(contentItem)
             } catch {
@@ -773,7 +783,8 @@ class TMDBService {
                     imageURL: contentItem.imageURL,
                     backdropURL: contentItem.backdropURL,
                     type: contentItem.type,
-                    logoURL: logoPath
+                    logoURL: logoPath,
+                    releaseDate: contentItem.releaseDate
                 )
                 contentItems.append(contentItem)
             } catch {
@@ -804,7 +815,8 @@ class TMDBService {
                     imageURL: contentItem.imageURL,
                     backdropURL: contentItem.backdropURL,
                     type: contentItem.type,
-                    logoURL: logoPath
+                    logoURL: logoPath,
+                    releaseDate: contentItem.releaseDate
                 )
                 contentItems.append(contentItem)
             } catch {
@@ -835,7 +847,8 @@ class TMDBService {
                     imageURL: contentItem.imageURL,
                     backdropURL: contentItem.backdropURL,
                     type: contentItem.type,
-                    logoURL: logoPath
+                    logoURL: logoPath,
+                    releaseDate: contentItem.releaseDate
                 )
                 contentItems.append(contentItem)
             } catch {
@@ -871,7 +884,8 @@ class TMDBService {
                     imageURL: contentItem.imageURL,
                     backdropURL: contentItem.backdropURL,
                     type: contentItem.type,
-                    logoURL: images.logos.first?.filePath
+                    logoURL: images.logos.first?.filePath,
+                    releaseDate: contentItem.releaseDate
                 )
                 featuredItems.append(contentItem)
             } catch {
@@ -891,7 +905,8 @@ class TMDBService {
                     imageURL: contentItem.imageURL,
                     backdropURL: contentItem.backdropURL,
                     type: contentItem.type,
-                    logoURL: images.logos.first?.filePath
+                    logoURL: images.logos.first?.filePath,
+                    releaseDate: contentItem.releaseDate
                 )
                 featuredItems.append(contentItem)
             } catch {
@@ -1017,7 +1032,8 @@ class TMDBService {
                 imageURL: movie.posterPath,
                 backdropURL: movie.backdropPath,
                 type: .movie,
-                logoURL: nil
+                logoURL: nil,
+                releaseDate: movie.releaseDate
             )
         }
     }
@@ -1216,7 +1232,8 @@ class TMDBService {
                 imageURL: content.posterPath,
                 backdropURL: content.backdropPath,
                 type: .movie,
-                logoURL: nil
+                logoURL: nil,
+                releaseDate: content.releaseDate
             )
         }
     }
@@ -1238,7 +1255,8 @@ class TMDBService {
                 imageURL: content.posterPath,
                 backdropURL: content.backdropPath,
                 type: .series,
-                logoURL: nil
+                logoURL: nil,
+                releaseDate: content.firstAirDate
             )
         }
     }
@@ -1265,7 +1283,8 @@ class TMDBService {
                     imageURL: content.posterPath,
                     backdropURL: content.backdropPath,
                     type: .movie,
-                    logoURL: nil
+                    logoURL: nil,
+                    releaseDate: content.releaseDate
                 )
             },
             totalPages: response.count > 0 ? 1000 : 0
@@ -1294,7 +1313,8 @@ class TMDBService {
                     imageURL: content.posterPath,
                     backdropURL: content.backdropPath,
                     type: .series,
-                    logoURL: nil
+                    logoURL: nil,
+                    releaseDate: content.firstAirDate
                 )
             },
             totalPages: response.count > 0 ? 1000 : 0

@@ -11,11 +11,18 @@ struct LiveTVView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 15) {
                         ForEach(categories, id: \.self) { category in
-                            FilterButton(
-                                title: category,
-                                isSelected: selectedCategory == category
-                            ) {
+                            Button(action: {
                                 selectedCategory = category
+                            }) {
+                                Text(category)
+                                    .font(.system(size: 16, weight: .medium))
+                                    .foregroundColor(selectedCategory == category ? .black : .white)
+                                    .padding(.horizontal, 16)
+                                    .padding(.vertical, 8)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 20)
+                                            .fill(selectedCategory == category ? Color.white : Color.gray.opacity(0.3))
+                                    )
                             }
                         }
                     }
